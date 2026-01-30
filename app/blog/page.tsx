@@ -11,6 +11,8 @@ export const metadata: Metadata = {
   description: "Expert insights, tips, and educational articles on physiotherapy, pain management, injury prevention, and healthy living.",
 }
 
+export const revalidate = false
+
 const categories = [
   "All Articles",
   "Pain Management",

@@ -1,21 +1,112 @@
+import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ArrowLeft, Calendar, Clock, Share2, User } from "lucide-react"
 
-// This would typically come from a CMS or database
-const article = {
-  title: "Understanding Chronic Back Pain: Causes, Prevention, and Treatment Options",
-  excerpt: "Back pain affects millions of people worldwide. Learn about the common causes, how to prevent it, and the most effective treatment approaches.",
-  image: "/images/blog-back-pain.jpg",
-  author: "Dr. Anil Sharma",
-  authorImage: "/images/doctor-profile.jpg",
-  authorRole: "Lead Physiotherapist",
-  date: "January 15, 2026",
-  readTime: "8 min read",
-  category: "Pain Management",
-  content: `
+// Blog posts for static generation
+const blogPosts = [
+  {
+    slug: "understanding-chronic-back-pain",
+    title: "Understanding Chronic Back Pain: Causes, Prevention, and Treatment Options",
+    excerpt: "Back pain affects millions of people worldwide. Learn about the common causes, how to prevent it, and the most effective treatment approaches.",
+    image: "/images/blog-back-pain.jpg",
+    author: "Dr. Anil Sharma",
+    authorImage: "/images/doctor-profile.jpg",
+    authorRole: "Lead Physiotherapist",
+    date: "January 15, 2026",
+    readTime: "8 min read",
+    category: "Pain Management",
+  },
+  {
+    slug: "exercise-tips-for-seniors",
+    title: "Safe Exercise Tips for Seniors: Staying Active at Any Age",
+    excerpt: "Discover gentle yet effective exercises that help seniors maintain mobility, strength, and independence.",
+    image: "/images/blog-exercise.jpg",
+    author: "Dr. Meera Patel",
+    authorImage: "/images/doctor-profile.jpg",
+    authorRole: "Senior Physiotherapist",
+    date: "January 10, 2026",
+    readTime: "6 min read",
+    category: "Healthy Living",
+  },
+  {
+    slug: "sports-injury-prevention",
+    title: "5 Essential Warm-Up Routines to Prevent Sports Injuries",
+    excerpt: "Proper warm-up is crucial for injury prevention. Learn the best routines to prepare your body for physical activity.",
+    image: "/images/blog-sports.jpg",
+    author: "Dr. Vikram Singh",
+    authorImage: "/images/doctor-profile.jpg",
+    authorRole: "Sports Medicine Specialist",
+    date: "January 5, 2026",
+    readTime: "5 min read",
+    category: "Injury Prevention",
+  },
+  {
+    slug: "post-surgery-recovery",
+    title: "Your Complete Guide to Post-Surgery Recovery",
+    excerpt: "What to expect after orthopedic surgery and how physiotherapy can accelerate your healing process.",
+    image: "/images/clinic-interior.jpg",
+    author: "Dr. Anil Sharma",
+    authorImage: "/images/doctor-profile.jpg",
+    authorRole: "Lead Physiotherapist",
+    date: "December 28, 2025",
+    readTime: "10 min read",
+    category: "Recovery",
+  },
+  {
+    slug: "ergonomic-workspace-setup",
+    title: "Creating an Ergonomic Workspace: A Complete Guide",
+    excerpt: "Learn how to set up your workspace to prevent repetitive strain injuries and maintain good posture.",
+    image: "/images/blog-back-pain.jpg",
+    author: "Dr. Meera Patel",
+    authorImage: "/images/doctor-profile.jpg",
+    authorRole: "Senior Physiotherapist",
+    date: "December 20, 2025",
+    readTime: "7 min read",
+    category: "Pain Management",
+  },
+  {
+    slug: "stretching-benefits",
+    title: "The Science Behind Stretching: Why Flexibility Matters",
+    excerpt: "Understanding the benefits of stretching and how it contributes to overall physical health and injury prevention.",
+    image: "/images/blog-exercise.jpg",
+    author: "Dr. Vikram Singh",
+    authorImage: "/images/doctor-profile.jpg",
+    authorRole: "Sports Medicine Specialist",
+    date: "December 15, 2025",
+    readTime: "6 min read",
+    category: "Exercise Tips",
+  },
+]
+
+export async function generateStaticParams() {
+  return blogPosts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
+function getBlogPost(slug: string) {
+  return blogPosts.find((post) => post.slug === slug)
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string }
+}): Promise<Metadata> {
+  const post = getBlogPost(params.slug)
+  return {
+    title: post?.title ?? "Blog Article - Hope and Heal",
+    description: post?.excerpt ?? "Expert physiotherapy articles and patient education.",
+  }
+}
+
+// Article content mapping by slug
+const articleContent: Record<string, { content: string }> = {
+  "understanding-chronic-back-pain": {
+    content: `
     <p>Back pain is one of the most common health complaints, affecting people of all ages. While it can be frustrating and debilitating, understanding its causes and treatment options can help you manage and overcome this condition effectively.</p>
 
     <h2>Common Causes of Back Pain</h2>
@@ -71,6 +162,7 @@ const article = {
     <h2>Conclusion</h2>
     <p>Back pain doesn't have to control your life. With proper understanding, prevention strategies, and professional treatment when needed, you can maintain a healthy, pain-free back. If you're experiencing persistent back pain, don't hesitate to reach out to our team at PhysioCare for a personalized assessment and treatment plan.</p>
   `,
+  },
 }
 
 const relatedPosts = [
@@ -97,7 +189,31 @@ const relatedPosts = [
   },
 ]
 
-export default function BlogArticlePage() {
+export default function BlogArticlePage({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const post = getBlogPost(params.slug)
+  const content = articleContent[params.slug]?.content || ""
+  
+  if (!post) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-primary">Article not found</h1>
+            <Link href="/blog" className="mt-4 inline-block text-primary underline">
+              Return to blog
+            </Link>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -110,33 +226,33 @@ export default function BlogArticlePage() {
             >
               <ArrowLeft className="h-3.5 w-3.5" /> Back to articles
             </Link>
-            <p className="mt-4 text-xs uppercase tracking-wide text-muted-foreground">{article.category}</p>
+            <p className="mt-4 text-xs uppercase tracking-wide text-muted-foreground">{post.category}</p>
             <h1 className="mt-2 text-3xl font-semibold text-primary">
-              {article.title}
+              {post.title}
             </h1>
             <div className="mt-4 flex flex-wrap items-center gap-6 text-sm text-foreground/80">
               <div className="flex items-center gap-3">
                 <div className="relative h-12 w-12 overflow-hidden border border-border">
                   <Image
-                    src={article.authorImage || "/placeholder.svg"}
-                    alt={article.author}
+                    src={post.authorImage || "/placeholder.svg"}
+                    alt={post.author}
                     fill
                     className="object-cover"
                   />
                 </div>
                 <div>
-                  <p className="font-semibold text-foreground">{article.author}</p>
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">{article.authorRole}</p>
+                  <p className="font-semibold text-foreground">{post.author}</p>
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground">{post.authorRole}</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-4 text-xs uppercase tracking-wide text-muted-foreground">
                 <span className="flex items-center gap-1">
                   <Calendar className="h-3.5 w-3.5" />
-                  {article.date}
+                  {post.date}
                 </span>
                 <span className="flex items-center gap-1">
                   <Clock className="h-3.5 w-3.5" />
-                  {article.readTime}
+                  {post.readTime}
                 </span>
               </div>
             </div>
@@ -156,8 +272,8 @@ export default function BlogArticlePage() {
             <div className="border border-border">
               <div className="relative aspect-[21/9] bg-secondary/40">
                 <Image
-                  src={article.image || "/placeholder.svg"}
-                  alt={article.title}
+                  src={post.image || "/placeholder.svg"}
+                  alt={post.title}
                   fill
                   className="object-cover"
                   priority
@@ -172,7 +288,7 @@ export default function BlogArticlePage() {
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_220px]">
               <article
                 className="prose prose-sm max-w-none prose-headings:text-primary prose-a:text-primary prose-strong:text-foreground"
-                dangerouslySetInnerHTML={{ __html: article.content }}
+                dangerouslySetInnerHTML={{ __html: content }}
               />
               <aside className="space-y-4 text-sm text-foreground/80">
                 <div>
@@ -186,15 +302,15 @@ export default function BlogArticlePage() {
                   <div className="mt-2 flex items-center gap-3">
                     <div className="relative h-12 w-12 border border-border">
                       <Image
-                        src={article.authorImage || "/placeholder.svg"}
-                        alt={article.author}
+                        src={post.authorImage || "/placeholder.svg"}
+                        alt={post.author}
                         fill
                         className="object-cover"
                       />
                     </div>
                     <div>
-                      <p className="font-semibold text-foreground">{article.author}</p>
-                      <p className="text-xs text-muted-foreground">{article.authorRole}</p>
+                      <p className="font-semibold text-foreground">{post.author}</p>
+                      <p className="text-xs text-muted-foreground">{post.authorRole}</p>
                     </div>
                   </div>
                 </div>
@@ -223,11 +339,11 @@ export default function BlogArticlePage() {
           <div className="mx-auto max-w-6xl px-4">
             <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Related reading</p>
             <div className="mt-4 space-y-4">
-              {relatedPosts.map((post) => (
-                <article key={post.id} className="border border-border p-4 text-sm">
-                  <p className="text-xs uppercase tracking-wide text-muted-foreground">{post.category}</p>
-                  <Link href={`/blog/${post.slug}`} className="mt-1 inline-block font-semibold text-primary underline">
-                    {post.title}
+              {relatedPosts.map((relatedPost) => (
+                <article key={relatedPost.id} className="border border-border p-4 text-sm">
+                  <p className="text-xs uppercase tracking-wide text-muted-foreground">{relatedPost.category}</p>
+                  <Link href={`/blog/${relatedPost.slug}`} className="mt-1 inline-block font-semibold text-primary underline">
+                    {relatedPost.title}
                   </Link>
                 </article>
               ))}
