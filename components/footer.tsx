@@ -1,9 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { Phone, Mail, MapPin, Clock, MessageCircle, Facebook, Instagram, Youtube } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, MessageCircle, Facebook, Instagram, Youtube, Calendar } from "lucide-react"
 import { Logo } from "@/components/logo"
-import { BookAppointmentButton } from "@/components/book-appointment-button"
+import { useAppointmentModal } from "@/contexts/appointment-modal-context"
 import { MapEmbed } from "@/components/map-embed"
 
 const quickLinks = [
@@ -23,6 +23,8 @@ const services = [
 ]
 
 export function Footer() {
+  const { openModal } = useAppointmentModal()
+  
   return (
     <footer className="bg-slate-900 text-white">
       <div className="mx-auto max-w-6xl px-4 py-16">
@@ -133,7 +135,7 @@ export function Footer() {
               href="https://wa.me/919876543210"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full bg-whatsapp px-8 py-3.5 font-bold text-white shadow-lg transition-all hover:scale-105"
+              className="flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-bold text-slate-900 shadow-lg transition-all hover:scale-105"
             >
               <MessageCircle className="h-5 w-5" />
               WhatsApp Us
@@ -145,7 +147,13 @@ export function Footer() {
               <Phone className="h-5 w-5" />
               Call Now
             </a>
-            <BookAppointmentButton variant="outline">Book Online</BookAppointmentButton>
+            <button
+              onClick={openModal}
+              className="flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-bold text-slate-900 shadow-lg transition-all hover:scale-105"
+            >
+              <Calendar className="h-5 w-5" />
+              Book Online
+            </button>
           </div>
         </div>
 
