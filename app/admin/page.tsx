@@ -55,7 +55,7 @@ export default function AdminDashboard() {
         setError("")
         try {
             const response = await fetch(
-                "https://script.google.com/macros/s/AKfycbzfPLEDLGxkpJmzmyJO_rDWlqOMg8co1Yw6Z2lJeLYieONjK8D6ORiA0c_Fe63QIXDOlw/exec"
+                "https://script.google.com/macros/s/AKfycbyWbvE942qLqJ5pvV96NghnibGI4kEklXPEjN4DBOcYfvV3RkJwklgClikJ1Sga9-EpVg/exec"
             )
 
             if (!response.ok) {

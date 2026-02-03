@@ -47,6 +47,60 @@ export function AppointmentBookingModal() {
       return
     }
 
+    // Availability Check
+    if (formData.preferredDate && formData.preferredTime) {
+      try {
+        const checkResponse = await fetch(
+          "https://script.google.com/macros/s/AKfycbyWbvE942qLqJ5pvV96NghnibGI4kEklXPEjN4DBOcYfvV3RkJwklgClikJ1Sga9-EpVg/exec"
+        )
+        const checkResult = await checkResponse.json()
+
+        if (checkResult.status === "success" && Array.isArray(checkResult.data)) {
+          const isTaken = checkResult.data.some((apt: any) => {
+            if (!apt.appointmentDate || !apt.timeSlot) return false
+
+            // Compare Date
+            const aptDate = new Date(apt.appointmentDate) // likely ISO
+            const selectedDate = new Date(formData.preferredDate)
+
+            const isSameDate = (
+              aptDate.getDate() === selectedDate.getDate() &&
+              aptDate.getMonth() === selectedDate.getMonth() &&
+              aptDate.getFullYear() === selectedDate.getFullYear()
+            )
+
+            if (!isSameDate) return false
+
+            // Compare Time (Hours and Minutes only)
+            const getHoursMinutes = (t: string) => {
+              if (t.includes('T')) {
+                const d = new Date(t)
+                return { h: d.getUTCHours(), m: d.getUTCMinutes() }
+              }
+              const [h, m] = t.split(':').map(Number)
+              return { h: h || 0, m: m || 0 }
+            }
+
+            const existing = getHoursMinutes(apt.timeSlot)
+            const selected = getHoursMinutes(formData.preferredTime)
+
+            // Check strict match
+            return existing.h === selected.h && existing.m === selected.m
+          })
+
+          if (isTaken) {
+            setError("This time slot is already booked. Please choose another time.")
+            setIsSubmitting(false)
+            return
+          }
+        }
+      } catch (checkErr) {
+        console.error("Availability check failed:", checkErr)
+        // Optionally allow proceeding if check fails, or block. 
+        // Blocking is safer for "Conflict Detection" feature.
+      }
+    }
+
     try {
       const payload = {
         fullName: `${formData.firstName} ${formData.lastName}`,
