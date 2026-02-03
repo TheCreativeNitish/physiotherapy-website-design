@@ -20,26 +20,29 @@ export function CTAStrip() {
             href="https://wa.me/919513060525"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/15 px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:scale-105 hover:border-white/70 hover:bg-white/25 hover:shadow-2xl sm:w-auto"
+            className="group relative inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-8 py-4 text-base font-bold text-white shadow-[0_4px_14px_0_rgba(37,211,102,0.39)] transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_20px_rgba(37,211,102,0.23)] sm:w-auto"
           >
-            <MessageCircle className="h-5 w-5" />
-            WhatsApp Now
+            <MessageCircle className="h-5 w-5 fill-white text-white" />
+            <span>WhatsApp Now</span>
           </a>
           <a
             href="tel:+919513060525"
-            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/15 px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:scale-105 hover:border-white/70 hover:bg-white/25 hover:shadow-2xl sm:w-auto"
+            className="group relative inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#3B82F6] px-8 py-4 text-base font-bold text-white shadow-[0_4px_14px_0_rgba(59,130,246,0.39)] transition-all duration-300 hover:scale-105 hover:shadow-[0_6px_20px_rgba(59,130,246,0.23)] sm:w-auto"
           >
-            <Phone className="h-5 w-5" />
-            Call Us Today
+            <Phone className="h-5 w-5 fill-white text-white" />
+            <span>Call Us Today</span>
           </a>
-          <BookAppointmentButton
-            variant="ghost"
-            size="lg"
-            className="w-full border border-white/40 bg-white/15 text-white shadow-xl transition-all hover:scale-105 hover:border-white/70 hover:bg-white/25 hover:shadow-2xl sm:w-auto"
-          >
-            <Calendar className="h-5 w-5" />
-            Book Appointment
-          </BookAppointmentButton>
+          <div className="relative group sm:w-auto w-full">
+            <div className="absolute -inset-0.5 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full opacity-50 blur group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
+            <BookAppointmentButton
+              variant="primary"
+              size="lg"
+              className="relative w-full bg-slate-950 border border-white/10 text-white shadow-xl transition-all hover:bg-slate-900 sm:w-auto"
+            >
+              <Calendar className="h-5 w-5 mr-2 text-purple-400" />
+              Book Appointment
+            </BookAppointmentButton>
+          </div>
         </div>
 
         <p className="mt-8 text-sm text-white/80">

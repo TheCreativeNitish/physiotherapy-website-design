@@ -41,12 +41,12 @@ export function Footer() {
               <a href="tel:+919513060525" className="flex items-center gap-2 transition hover:text-whatsapp">
                 <Phone className="h-4 w-4" /> +91 95130 60525
               </a>
-              <a href="mailto:info@hopeandheal.com" className="flex items-center gap-2 transition hover:text-whatsapp">
-                <Mail className="h-4 w-4" /> info@hopeandheal.com
+              <a href="mailto:1488neha@gmail.com" className="flex items-center gap-2 transition hover:text-whatsapp">
+                <Mail className="h-4 w-4" /> 1488neha@gmail.com
               </a>
               <p className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                Ramamurthy Nagar, Bangalore
+                1st cross,1st main, Nagappareddy layout, Ramamurthy Nagar, Bangalore, India, 560016
               </p>
               <p className="flex items-start gap-2">
                 <Clock className="mt-0.5 h-4 w-4 flex-shrink-0" />
@@ -98,7 +98,7 @@ export function Footer() {
               <div>
                 <h4 className="text-lg font-semibold mb-3">Location</h4>
                 <p className="text-white/80 text-sm leading-relaxed">
-                  123 Health Street, Medical Complex, City Name, State 123456
+                  1st cross,1st main, Nagappareddy layout, Ramamurthy Nagar, Bangalore, India, 560016
                 </p>
               </div>
 
@@ -116,9 +116,9 @@ export function Footer() {
                     <Phone className="h-4 w-4" />
                     +91 95130 60525
                   </a>
-                  <a href="mailto:info@hopeandheal.com" className="flex items-center gap-2 text-white/80 hover:text-white transition">
+                  <a href="mailto:1488neha@gmail.com" className="flex items-center gap-2 text-white/80 hover:text-white transition">
                     <Mail className="h-4 w-4" />
-                    info@hopeandheal.com
+                    1488neha@gmail.com
                   </a>
                 </div>
               </div>
@@ -165,10 +165,10 @@ export function Footer() {
             <Link href="/admin" className="hover:text-white transition">Admin</Link>
           </p>
           <div className="flex items-center gap-4">
-            <a href="https://www.facebook.com" target="_blank" rel="noreferrer" className="text-white/60 transition hover:text-whatsapp" aria-label="Facebook">
+            <a href="https://www.facebook.com/people/HopeHeal-Physiotherapy-Clinic/100063745584977/" target="_blank" rel="noreferrer" className="text-white/60 transition hover:text-whatsapp" aria-label="Facebook">
               <Facebook className="h-5 w-5" />
             </a>
-            <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="text-white/60 transition hover:text-whatsapp" aria-label="Instagram">
+            <a href="https://www.instagram.com/cuppingwithneha/reels/" target="_blank" rel="noreferrer" className="text-white/60 transition hover:text-whatsapp" aria-label="Instagram">
               <Instagram className="h-5 w-5" />
             </a>
             <a href="https://www.youtube.com" target="_blank" rel="noreferrer" className="text-white/60 transition hover:text-whatsapp" aria-label="YouTube">

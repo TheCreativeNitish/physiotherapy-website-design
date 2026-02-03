@@ -29,14 +29,14 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    details: ["info@hopeandheal.com"],
-    action: "mailto:info@hopeandheal.com",
+    details: ["1488neha@gmail.com"],
+    action: "mailto:1488neha@gmail.com",
     actionText: "Send Email",
   },
   {
     icon: MapPin,
     title: "Address",
-    details: ["Ramamurthy Nagar, Bangalore"],
+    details: ["1st cross,1st main, Nagappareddy layout,", "Ramamurthy Nagar, Bangalore, India, 560016"],
     action: "https://maps.google.com",
     actionText: "Get Directions",
   },
@@ -63,9 +63,9 @@ const branches = [
   {
     id: "main-clinic",
     name: "Hope and Heal Physiotherapy",
-    address: ["Ramamurthy Nagar,", "Bangalore, India"],
+    address: ["1st cross,1st main, Nagappareddy layout,", "Ramamurthy Nagar, Bangalore, India, 560016"],
     phone: "+91 95130 60525",
-    email: "info@hopeandheal.com",
+    email: "1488neha@gmail.com",
   },
 ]
 

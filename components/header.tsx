@@ -45,19 +45,19 @@ export function Header() {
               <Phone className="h-4 w-4 flex-shrink-0" />
               <span>+91 95130 60525</span>
             </a>
-            <a href="mailto:info@hopeandheal.com" className="flex items-center gap-1.5 sm:gap-2 transition hover:text-orange-400">
+            <a href="mailto:1488neha@gmail.com" className="flex items-center gap-1.5 sm:gap-2 transition hover:text-orange-400">
               <Mail className="h-4 w-4 flex-shrink-0" />
-              <span>info@hopeandheal.com</span>
+              <span>1488neha@gmail.com</span>
             </a>
           </div>
 
           {/* Right: Social Links */}
           <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
-            <a href="https://www.facebook.com" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/people/HopeHeal-Physiotherapy-Clinic/100063745584977/" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="Facebook">
               <Facebook className="h-4 w-4" />
               <span className="hidden sm:inline">Facebook</span>
             </a>
-            <a href="https://www.instagram.com" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/cuppingwithneha/reels/" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="Instagram">
               <Instagram className="h-4 w-4" />
               <span className="hidden sm:inline">Instagram</span>
             </a>

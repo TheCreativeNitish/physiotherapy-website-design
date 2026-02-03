@@ -132,7 +132,7 @@ export function InstagramFeedSection() {
                             <h3 className="text-2xl font-light text-gray-900">@cuppingwithneha</h3>
                             <div className="flex gap-3">
                                 <a
-                                    href="https://www.instagram.com/cuppingwithneha/"
+                                    href="https://www.instagram.com/cuppingwithneha/reels/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="bg-[#0095f6] hover:bg-[#1877f2] text-white px-6 py-1.5 rounded-lg text-sm font-semibold transition-colors"
@@ -173,7 +173,7 @@ export function InstagramFeedSection() {
 
                 <div className="mt-12 text-center">
                     <a
-                        href="https://www.instagram.com/cuppingwithneha/"
+                        href="https://www.instagram.com/cuppingwithneha/reels/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-gray-500 font-medium hover:text-[#E1306C] transition-colors"

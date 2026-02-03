@@ -51,13 +51,13 @@ export default function AppointmentPage() {
                                             <Phone className="h-5 w-5" />
                                             <span className="font-medium">+91 95130 60525</span>
                                         </a>
-                                        <a href="mailto:info@hopeandheal.com" className="flex items-center gap-3 hover:text-teal-100 transition">
+                                        <a href="mailto:1488neha@gmail.com" className="flex items-center gap-3 hover:text-teal-100 transition">
                                             <Mail className="h-5 w-5" />
-                                            <span className="font-medium">info@hopeandheal.com</span>
+                                            <span className="font-medium">1488neha@gmail.com</span>
                                         </a>
                                         <div className="flex items-start gap-3">
                                             <MapPin className="h-5 w-5 mt-1" />
-                                            <span>Ramamurthy Nagar, Bangalore, India</span>
+                                            <span className="text-sm">1st cross,1st main, Nagappareddy layout, Ramamurthy Nagar, Bangalore, India, 560016</span>
                                         </div>
                                     </div>
                                 </div>

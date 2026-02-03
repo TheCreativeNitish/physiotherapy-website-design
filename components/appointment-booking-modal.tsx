@@ -51,7 +51,7 @@ export function AppointmentBookingModal() {
     if (formData.preferredDate && formData.preferredTime) {
       try {
         const checkResponse = await fetch(
-          "https://script.google.com/macros/s/AKfycbyWbvE942qLqJ5pvV96NghnibGI4kEklXPEjN4DBOcYfvV3RkJwklgClikJ1Sga9-EpVg/exec"
+          "https://script.google.com/macros/s/AKfycbzTEJrBSktGVt66fU32QXx9Oi3tgOrjg4rQbsImUI70pcOu41Qby2h-1FzAhl87zbkFJQ/exec"
         )
         const checkResult = await checkResponse.json()
 
@@ -60,8 +60,11 @@ export function AppointmentBookingModal() {
             if (!apt.appointmentDate || !apt.timeSlot) return false
 
             // Compare Date
-            const aptDate = new Date(apt.appointmentDate) // likely ISO
+            // API now returns display values (strings) from sheet
+            const aptDate = new Date(apt.appointmentDate)
             const selectedDate = new Date(formData.preferredDate)
+
+            if (isNaN(aptDate.getTime()) || isNaN(selectedDate.getTime())) return false
 
             const isSameDate = (
               aptDate.getDate() === selectedDate.getDate() &&
@@ -71,21 +74,16 @@ export function AppointmentBookingModal() {
 
             if (!isSameDate) return false
 
-            // Compare Time (Hours and Minutes only)
-            const getHoursMinutes = (t: string) => {
-              if (t.includes('T')) {
-                const d = new Date(t)
-                return { h: d.getUTCHours(), m: d.getUTCMinutes() }
-              }
-              const [h, m] = t.split(':').map(Number)
-              return { h: h || 0, m: m || 0 }
-            }
+            // Compare Time (String Match)
+            // Existing: "14:30" or "14:30:00"
+            // Selected: "14:30"
+            let t1 = (apt.timeSlot || "").toString().trim()
+            let t2 = formData.preferredTime.toString().trim()
 
-            const existing = getHoursMinutes(apt.timeSlot)
-            const selected = getHoursMinutes(formData.preferredTime)
+            if (t1.length > 5) t1 = t1.substring(0, 5)
+            if (t2.length > 5) t2 = t2.substring(0, 5)
 
-            // Check strict match
-            return existing.h === selected.h && existing.m === selected.m
+            return t1 === t2
           })
 
           if (isTaken) {
@@ -112,7 +110,7 @@ export function AppointmentBookingModal() {
       }
 
       await fetch(
-        "https://script.google.com/macros/s/AKfycbzfPLEDLGxkpJmzmyJO_rDWlqOMg8co1Yw6Z2lJeLYieONjK8D6ORiA0c_Fe63QIXDOlw/exec",
+        "https://script.google.com/macros/s/AKfycbzTEJrBSktGVt66fU32QXx9Oi3tgOrjg4rQbsImUI70pcOu41Qby2h-1FzAhl87zbkFJQ/exec",
         {
           method: "POST",
           mode: "no-cors",

@@ -100,15 +100,7 @@ export default function ServicesPage() {
                       ))}
                     </div>
 
-                    <div className="pt-4">
-                      <Link
-                        href="/appointment"
-                        className="inline-flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition-colors shadow-lg hover:shadow-xl"
-                      >
-                        Book This Treatment
-                        <ArrowRight className="h-4 w-4" />
-                      </Link>
-                    </div>
+
                   </div>
                 </div>
               ))}
