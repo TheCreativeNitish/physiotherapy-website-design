@@ -24,7 +24,7 @@ const services = [
 
 export function Footer() {
   const { openModal } = useAppointmentModal()
-  
+
   return (
     <footer className="bg-slate-900 text-white">
       <div className="mx-auto max-w-6xl px-4 py-16">
@@ -34,19 +34,19 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Logo size="lg" className="mb-6" />
             <p className="mt-4 leading-relaxed text-white/80">
-              Your trusted partner in pain relief, injury recovery, and mobility restoration. 
+              Your trusted partner in pain relief, injury recovery, and mobility restoration.
               We provide expert physiotherapy care with a personal touch.
             </p>
             <div className="mt-6 space-y-3 text-sm text-white/90">
-              <a href="tel:+919876543210" className="flex items-center gap-2 transition hover:text-whatsapp">
-                <Phone className="h-4 w-4" /> +91 98765 43210
+              <a href="tel:+919513060525" className="flex items-center gap-2 transition hover:text-whatsapp">
+                <Phone className="h-4 w-4" /> +91 95130 60525
               </a>
               <a href="mailto:info@hopeandheal.com" className="flex items-center gap-2 transition hover:text-whatsapp">
                 <Mail className="h-4 w-4" /> info@hopeandheal.com
               </a>
               <p className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                123 Health Street, Medical Complex, City Name, State 123456
+                Ramamurthy Nagar, Bangalore
               </p>
               <p className="flex items-start gap-2">
                 <Clock className="mt-0.5 h-4 w-4 flex-shrink-0" />
@@ -92,7 +92,7 @@ export function Footer() {
             <div className="lg:col-span-2">
               <MapEmbed />
             </div>
-            
+
             {/* Contact Info */}
             <div className="space-y-4">
               <div>
@@ -101,20 +101,20 @@ export function Footer() {
                   123 Health Street, Medical Complex, City Name, State 123456
                 </p>
               </div>
-              
+
               <div>
                 <h4 className="text-lg font-semibold mb-3">Hours</h4>
                 <p className="text-white/80 text-sm">
                   Mon - Sat: 9:00 AM - 8:00 PM
                 </p>
               </div>
-              
+
               <div>
                 <h4 className="text-lg font-semibold mb-3">Contact</h4>
                 <div className="space-y-2 text-sm">
-                  <a href="tel:+919876543210" className="flex items-center gap-2 text-white/80 hover:text-white transition">
+                  <a href="tel:+919513060525" className="flex items-center gap-2 text-white/80 hover:text-white transition">
                     <Phone className="h-4 w-4" />
-                    +91 98765 43210
+                    +91 95130 60525
                   </a>
                   <a href="mailto:info@hopeandheal.com" className="flex items-center gap-2 text-white/80 hover:text-white transition">
                     <Mail className="h-4 w-4" />
@@ -132,7 +132,7 @@ export function Footer() {
           <p className="mt-3 text-white/80">Book your appointment today and take the first step towards a pain-free life</p>
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919513060525"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-bold text-slate-900 shadow-lg transition-all hover:scale-105"
@@ -141,7 +141,7 @@ export function Footer() {
               WhatsApp Us
             </a>
             <a
-              href="tel:+919876543210"
+              href="tel:+919513060525"
               className="flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-bold text-slate-900 shadow-lg transition-all hover:scale-105"
             >
               <Phone className="h-5 w-5" />
@@ -161,6 +161,8 @@ export function Footer() {
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 md:flex-row">
           <p className="text-sm text-white/60">
             &copy; {new Date().getFullYear()} Hope and Heal Physiotherapy Clinic. All rights reserved.
+            <span className="mx-2 text-white/20">|</span>
+            <Link href="/admin" className="hover:text-white transition">Admin</Link>
           </p>
           <div className="flex items-center gap-4">
             <a href="https://www.facebook.com" target="_blank" rel="noreferrer" className="text-white/60 transition hover:text-whatsapp" aria-label="Facebook">

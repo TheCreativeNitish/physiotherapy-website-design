@@ -14,10 +14,10 @@ export function CTAStrip() {
         <p className="mx-auto mt-4 max-w-2xl text-lg text-white/90">
           Don't let pain hold you back. Our expert physiotherapists are here to help you heal and get back to doing what you love.
         </p>
-        
+
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="https://wa.me/919876543210"
+            href="https://wa.me/919513060525"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/15 px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:scale-105 hover:border-white/70 hover:bg-white/25 hover:shadow-2xl sm:w-auto"
@@ -26,7 +26,7 @@ export function CTAStrip() {
             WhatsApp Now
           </a>
           <a
-            href="tel:+919876543210"
+            href="tel:+919513060525"
             className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/40 bg-white/15 px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:scale-105 hover:border-white/70 hover:bg-white/25 hover:shadow-2xl sm:w-auto"
           >
             <Phone className="h-5 w-5" />

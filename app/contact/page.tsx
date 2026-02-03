@@ -10,10 +10,10 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
-import { 
-  Clock, 
-  Mail, 
-  MapPin, 
+import {
+  Clock,
+  Mail,
+  MapPin,
   Phone,
   CheckCircle
 } from "lucide-react"
@@ -22,21 +22,21 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    details: ["+91 98765 43210", "+91 98765 43211"],
-    action: "tel:+919876543210",
+    details: ["+91 95130 60525"],
+    action: "tel:+919513060525",
     actionText: "Call Now",
   },
   {
     icon: Mail,
     title: "Email",
-    details: ["info@physiocare.com", "appointments@physiocare.com"],
-    action: "mailto:info@physiocare.com",
+    details: ["info@hopeandheal.com"],
+    action: "mailto:info@hopeandheal.com",
     actionText: "Send Email",
   },
   {
     icon: MapPin,
     title: "Address",
-    details: ["123 Health Street, Medical Complex", "City Name, State 123456"],
+    details: ["Ramamurthy Nagar, Bangalore"],
     action: "https://maps.google.com",
     actionText: "Get Directions",
   },
@@ -61,25 +61,11 @@ const services = [
 
 const branches = [
   {
-    id: "central-clinic",
-    name: "Central Clinic",
-    address: ["123 Health Street, Medical Complex", "City Name, State 123456"],
-    phone: "+91 98765 43210",
-    email: "central@physiocare.com",
-  },
-  {
-    id: "north-wing",
-    name: "North Wing",
-    address: ["22 North Avenue, Healthcare Plaza", "City Name, State 123456"],
-    phone: "+91 98765 43211",
-    email: "north@physiocare.com",
-  },
-  {
-    id: "east-unit",
-    name: "East Wellness Unit",
-    address: ["5 East Drive, Level 2", "City Name, State 123456"],
-    phone: "+91 98765 43212",
-    email: "east@physiocare.com",
+    id: "main-clinic",
+    name: "Hope and Heal Physiotherapy",
+    address: ["Ramamurthy Nagar,", "Bangalore, India"],
+    phone: "+91 95130 60525",
+    email: "info@hopeandheal.com",
   },
 ]
 
@@ -90,10 +76,10 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
-    
+
     // Simulate form submission
     await new Promise(resolve => setTimeout(resolve, 1500))
-    
+
     setIsLoading(false)
     setIsSubmitted(true)
   }
@@ -201,7 +187,7 @@ export default function ContactPage() {
                             <Input
                               id="phone"
                               type="tel"
-                              placeholder="+91 98765 43210"
+                              placeholder="+91 95130 60525"
                               required
                             />
                           </div>
@@ -274,7 +260,7 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-foreground/80">
-                      For urgent scheduling or clarification, call the clinic desk at <a href="tel:+919876543210" className="text-primary underline">+91 98765 43210</a>. Phone lines are monitored during operating hours.
+                      For urgent scheduling or clarification, call the clinic desk at <a href="tel:+919513060525" className="text-primary underline">+91 95130 60525</a>. Phone lines are monitored during operating hours.
                     </p>
                   </CardContent>
                 </Card>

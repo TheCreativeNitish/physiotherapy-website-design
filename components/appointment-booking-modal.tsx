@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { X, AlertCircle } from "lucide-react"
+import { X, AlertCircle, Loader2 } from "lucide-react"
 import { useAppointmentModal } from "@/contexts/appointment-modal-context"
 
 const services = [
@@ -22,8 +22,10 @@ export function AppointmentBookingModal() {
     phone: "",
     service: "",
     preferredDate: "",
+    preferredTime: "",
     message: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState("")
 
@@ -33,21 +35,41 @@ export function AppointmentBookingModal() {
     setError("")
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
+    setIsSubmitting(true)
 
     // Validation
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.service) {
       setError("Please fill in all required fields")
+      setIsSubmitting(false)
       return
     }
 
-    // Simulate form submission
-    console.log("Form submitted:", formData)
-    setSubmitted(true)
+    try {
+      const payload = {
+        fullName: `${formData.firstName} ${formData.lastName}`,
+        phoneNumber: formData.phone,
+        email: formData.email,
+        appointmentDate: formData.preferredDate,
+        preferredTime: formData.preferredTime,
+        reason: `${formData.service}${formData.message ? ` - ${formData.message}` : ""}`,
+      }
 
-    // Reset form after 3 seconds and close
-    setTimeout(() => {
+      await fetch(
+        "https://script.google.com/macros/s/AKfycbzfPLEDLGxkpJmzmyJO_rDWlqOMg8co1Yw6Z2lJeLYieONjK8D6ORiA0c_Fe63QIXDOlw/exec",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+          body: JSON.stringify(payload),
+        }
+      )
+
+      setSubmitted(true)
       setFormData({
         firstName: "",
         lastName: "",
@@ -55,11 +77,20 @@ export function AppointmentBookingModal() {
         phone: "",
         service: "",
         preferredDate: "",
+        preferredTime: "",
         message: "",
       })
-      setSubmitted(false)
-      closeModal()
-    }, 3000)
+
+      setTimeout(() => {
+        setSubmitted(false)
+        closeModal()
+      }, 3000)
+    } catch (err) {
+      console.error("Submission error:", err)
+      setError("Failed to submit booking. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (!isOpen) return null
@@ -168,7 +199,7 @@ export function AppointmentBookingModal() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 95130 60525"
                     className="mt-2 w-full rounded-lg border border-border bg-white px-4 py-2.5 text-foreground placeholder:text-foreground/40 transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
@@ -194,18 +225,32 @@ export function AppointmentBookingModal() {
                 </select>
               </div>
 
-              {/* Preferred Date */}
-              <div>
-                <label className="block text-sm font-semibold text-foreground">
-                  Preferred Date
-                </label>
-                <input
-                  type="date"
-                  name="preferredDate"
-                  value={formData.preferredDate}
-                  onChange={handleChange}
-                  className="mt-2 w-full rounded-lg border border-border bg-white px-4 py-2.5 text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                />
+              {/* Preferred Date & Time */}
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label className="block text-sm font-semibold text-foreground">
+                    Preferred Date
+                  </label>
+                  <input
+                    type="date"
+                    name="preferredDate"
+                    value={formData.preferredDate}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-lg border border-border bg-white px-4 py-2.5 text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-foreground">
+                    Preferred Time
+                  </label>
+                  <input
+                    type="time"
+                    name="preferredTime"
+                    value={formData.preferredTime}
+                    onChange={handleChange}
+                    className="mt-2 w-full rounded-lg border border-border bg-white px-4 py-2.5 text-foreground transition focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  />
+                </div>
               </div>
 
               {/* Additional Message */}
@@ -234,9 +279,17 @@ export function AppointmentBookingModal() {
                 </button>
                 <button
                   type="submit"
-                  className="rounded-lg bg-primary px-6 py-3 font-bold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl"
+                  disabled={isSubmitting}
+                  className="rounded-lg bg-primary px-6 py-3 font-bold text-white shadow-lg transition hover:bg-primary/90 hover:shadow-xl disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center min-w-[140px]"
                 >
-                  Submit Appointment Request
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Submitting...
+                    </span>
+                  ) : (
+                    "Submit Appointment Request"
+                  )}
                 </button>
               </div>
 

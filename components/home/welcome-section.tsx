@@ -31,6 +31,20 @@ export function WelcomeSection() {
               <div className="h-1 w-12 bg-gradient-to-r from-red-500 to-orange-500 rounded-full" />
             </div>
 
+            {/* Mobile Image: Visible only on small screens, inserted between Heading and Description */}
+            <div className="lg:hidden fade-in relative h-[350px] sm:h-[400px] rounded-3xl overflow-hidden shadow-xl my-6">
+              <img
+                src="/images/neha-doctor.jpg"
+                alt="Neha Sharma - Physiotherpist"
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-md rounded-xl p-3 shadow-lg">
+                <p className="text-teal-800 font-bold text-base mb-0.5">Neha Sharma (PT)</p>
+                <p className="text-teal-600 font-semibold text-xs">10+ Years of Excellence</p>
+              </div>
+            </div>
+
             {/* Description */}
             <div className="space-y-4 text-foreground/80">
               <p className="text-base sm:text-lg leading-relaxed">
@@ -55,27 +69,30 @@ export function WelcomeSection() {
                 Expert Physiotherapists
               </h4>
               <p className="text-foreground/70 text-base">
-                Certified practitioners with 10+ years of specialized experience
+                B.P.T, MIAP, Certified Cupping, Dry Needling, Manual & IASTM Therapist
               </p>
             </div>
 
             {/* CTA Button */}
             <div className="pt-4">
-              <Button 
+              <Button
+                asChild
                 className="bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700 text-white px-8 py-3 rounded-full font-semibold flex items-center gap-2 shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
-                Learn More
-                <ArrowRight className="h-5 w-5" />
+                <a href="/about-doctor">
+                  Learn More
+                  <ArrowRight className="h-5 w-5" />
+                </a>
               </Button>
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="fade-in relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
+          {/* Right Image: Visible only on Large screens */}
+          <div className="hidden lg:block fade-in relative h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-105">
             {/* Image Container with gradient overlay */}
             <img
-              src="https://ik.imagekit.io/dvl5mhvik/dc.jpg"
-              alt="Physiotherapy Expert"
+              src="/images/neha-doctor.jpg"
+              alt="Neha Sharma - Physiotherpist"
               className="w-full h-full object-cover object-center"
             />
             {/* Gradient overlay */}
@@ -83,6 +100,7 @@ export function WelcomeSection() {
 
             {/* Floating badge */}
             <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl">
+              <p className="text-teal-800 font-extrabold text-lg mb-1">Neha Sharma (PT)</p>
               <p className="text-teal-600 font-bold text-sm">10+ Years of Excellence</p>
               <p className="text-foreground/70 text-xs">in Physiotherapy Care</p>
             </div>
@@ -98,9 +116,9 @@ export function WelcomeSection() {
             { number: "1000+", label: "Happy Patients" },
             { number: "10+", label: "Years Experience" },
             { number: "25+", label: "Treatment Types" },
-            { number: "24/7", label: "Customer Support"}
+            { number: "24/7", label: "Customer Support" }
           ].map((stat, index) => (
-            <div 
+            <div
               key={index}
               className="text-center p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-white/40 hover:bg-white/80 transition-all"
             >

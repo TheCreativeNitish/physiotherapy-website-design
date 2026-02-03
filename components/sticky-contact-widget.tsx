@@ -8,7 +8,7 @@ export function StickyContactWidget() {
       {/* Mobile: WhatsApp Only - Left Bottom */}
       <div className="fixed left-4 bottom-6 z-40 flex md:hidden">
         <a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/919513060525"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl"
@@ -23,7 +23,7 @@ export function StickyContactWidget() {
       <div className="fixed right-6 bottom-20 z-40 hidden md:flex flex-col gap-4">
         {/* Phone Button */}
         <a
-          href="tel:+919876543210"
+          href="tel:+919513060525"
           className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl"
           aria-label="Call us"
           title="Call us"
@@ -33,7 +33,7 @@ export function StickyContactWidget() {
 
         {/* WhatsApp Button */}
         <a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/919513060525"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl"

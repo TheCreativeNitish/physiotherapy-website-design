@@ -4,7 +4,9 @@ import { HeroSection } from "@/components/home/hero-section"
 import { WelcomeSection } from "@/components/home/welcome-section"
 import { ServicesSection } from "@/components/home/services-section"
 import { WhyChooseUs } from "@/components/home/why-choose-us"
-import { TestimonialsSection } from "@/components/home/testimonials-section"
+
+import { GoogleReviewsSection } from "@/components/home/google-reviews-section"
+import { InstagramFeedSection } from "@/components/home/instagram-feed-section"
 import { VideoSection } from "@/components/home/video-section"
 import { CTAStrip } from "@/components/home/cta-strip"
 
@@ -17,7 +19,9 @@ export default function Home() {
         <WelcomeSection />
         <ServicesSection />
         <WhyChooseUs />
-        <TestimonialsSection />
+
+        <GoogleReviewsSection />
+        <InstagramFeedSection />
         <VideoSection />
         <CTAStrip />
       </main>

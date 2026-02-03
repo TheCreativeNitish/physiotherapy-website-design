@@ -133,7 +133,7 @@ export function HeroSection() {
 
   return (
     <>
-      <section 
+      <section
         className="relative w-full h-[500px] sm:h-[600px] md:h-[700px] lg:h-[800px] xl:h-[90vh] overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -145,9 +145,8 @@ export function HeroSection() {
         {heroImages.map((image, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentSlide ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"
+              }`}
           >
             <Image
               src={image.src}
@@ -189,11 +188,10 @@ export function HeroSection() {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2 rounded-full transition-all ${
-                index === currentSlide
+              className={`h-2 rounded-full transition-all ${index === currentSlide
                   ? "w-8 bg-white"
                   : "w-2 bg-white/50 hover:bg-white/75"
-              }`}
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}
@@ -227,7 +225,7 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 justify-center items-center w-full px-2">
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/919513060525"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 rounded-full bg-teal-500/80 hover:bg-teal-500 px-6 sm:px-8 py-2.5 sm:py-3 font-semibold text-white shadow-lg transition-all hover:scale-105 hover:shadow-xl backdrop-blur-sm w-full sm:w-auto text-sm sm:text-base"

@@ -8,10 +8,10 @@ import { BookAppointmentButton } from "@/components/book-appointment-button"
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
+  { name: "About Doctor", href: "/about-doctor" },
   { name: "Services", href: "/services" },
-  { name: "Testimonials", href: "/#testimonials" },
-  { name: "Careers", href: "/about#careers" },
+  { name: "Reviews", href: "/reviews" },
+  { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -24,7 +24,7 @@ export function Header() {
     } else {
       document.body.style.overflow = 'unset'
     }
-    
+
     return () => {
       document.body.style.overflow = 'unset'
     }
@@ -41,9 +41,9 @@ export function Header() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 sm:gap-4 px-3 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm">
           {/* Left: Phone and Email */}
           <div className="flex flex-col items-start gap-1.5 sm:gap-3 lg:flex-row lg:items-center lg:gap-6">
-            <a href="tel:+919876543210" className="flex items-center gap-1.5 sm:gap-2 transition hover:text-orange-400">
+            <a href="tel:+919513060525" className="flex items-center gap-1.5 sm:gap-2 transition hover:text-orange-400">
               <Phone className="h-4 w-4 flex-shrink-0" />
-              <span>+91 98765 43210</span>
+              <span>+91 95130 60525</span>
             </a>
             <a href="mailto:info@hopeandheal.com" className="flex items-center gap-1.5 sm:gap-2 transition hover:text-orange-400">
               <Mail className="h-4 w-4 flex-shrink-0" />
@@ -61,7 +61,7 @@ export function Header() {
               <Instagram className="h-4 w-4" />
               <span className="hidden sm:inline">Instagram</span>
             </a>
-            <a href="https://wa.me/919876543210" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            <a href="https://wa.me/919513060525" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="WhatsApp">
               <MessageCircle className="h-4 w-4" />
               <span className="hidden sm:inline">WhatsApp</span>
             </a>
@@ -121,7 +121,7 @@ export function Header() {
           </div>
         </div>
       </nav>
-      
+
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 top-[100px] z-40 h-[calc(100vh-100px)] bg-white overflow-y-auto lg:hidden">
@@ -140,7 +140,7 @@ export function Header() {
               <div className="border-t border-border pt-4 mt-4">
                 <p className="text-xs font-bold uppercase text-muted-foreground mb-3">Quick Contact</p>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+919513060525"
                   className="flex items-center justify-center gap-2 rounded-lg border-2 border-primary px-4 py-3 text-base font-bold text-primary transition hover:bg-primary/5 mb-3"
                   onClick={closeMobileMenu}
                 >
@@ -148,7 +148,7 @@ export function Header() {
                   Call Now
                 </a>
                 <a
-                  href="https://wa.me/919876543210"
+                  href="https://wa.me/919513060525"
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center justify-center gap-2 rounded-lg bg-whatsapp px-4 py-3 text-base font-bold text-white transition hover:bg-whatsapp/90 mb-3"

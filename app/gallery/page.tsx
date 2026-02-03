@@ -1,211 +1,89 @@
 "use client"
 
-import { useState } from "react"
-import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { CTAStrip } from "@/components/home/cta-strip"
-import { X } from "lucide-react"
 
-const categories = [
-  { id: "all", name: "All Photos" },
-  { id: "clinic", name: "Clinic Interiors" },
-  { id: "treatment", name: "Treatment Sessions" },
-  { id: "equipment", name: "Equipment" },
-  { id: "team", name: "Our Team" },
-]
-
-const images = [
+const galleryImages = [
   {
-    id: 1,
-    src: "/images/clinic-interior.jpg",
-    alt: "Modern physiotherapy clinic treatment room",
-    category: "clinic",
-    title: "Treatment Room",
+    src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?q=80&w=800&fit=max",
+    category: "Clinic Interior",
+    alt: "Modern Clinic Waiting Area"
   },
   {
-    id: 2,
-    src: "/images/gallery-treatment-1.jpg",
-    alt: "Physiotherapist performing shoulder rehabilitation",
-    category: "treatment",
-    title: "Shoulder Rehabilitation",
+    src: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=800&fit=max",
+    category: "Treatment Room",
+    alt: "Private Treatment Room"
   },
   {
-    id: 3,
-    src: "/images/gallery-equipment.jpg",
-    alt: "Modern physiotherapy equipment",
-    category: "equipment",
-    title: "Rehabilitation Equipment",
+    src: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&fit=max",
+    category: "Equipment",
+    alt: "Exercise Equipment"
   },
   {
-    id: 4,
-    src: "/images/gallery-reception.jpg",
-    alt: "Welcoming clinic reception area",
-    category: "clinic",
-    title: "Reception Area",
+    src: "https://images.unsplash.com/photo-1581594187555-4001d782ae36?q=80&w=800&fit=max",
+    category: "Therapy",
+    alt: "Physiotherapy Session"
   },
   {
-    id: 5,
-    src: "/images/team-photo.jpg",
-    alt: "PhysioCare team of physiotherapists",
-    category: "team",
-    title: "Our Expert Team",
+    src: "https://images.unsplash.com/photo-1631815589968-fdb09a223b1e?q=80&w=800&fit=max",
+    category: "Equipment",
+    alt: "Advanced Modalities"
   },
   {
-    id: 6,
-    src: "/images/hero-physiotherapy.jpg",
-    alt: "Physiotherapist helping patient with exercises",
-    category: "treatment",
-    title: "Guided Exercise Session",
-  },
-  {
-    id: 7,
-    src: "/images/doctor-profile.jpg",
-    alt: "Dr. Anil Sharma - Lead Physiotherapist",
-    category: "team",
-    title: "Dr. Anil Sharma",
-  },
-  {
-    id: 8,
-    src: "/images/patient-testimonial.jpg",
-    alt: "Happy patient after successful treatment",
-    category: "treatment",
-    title: "Patient Success Story",
-  },
+    src: "https://images.unsplash.com/photo-1516549655169-df83a092dd14?q=80&w=800&fit=max",
+    category: "Clinic Team",
+    alt: "Medical Professional"
+  }
 ]
 
 export default function GalleryPage() {
-  const [activeCategory, setActiveCategory] = useState("all")
-  const [lightboxImage, setLightboxImage] = useState<typeof images[0] | null>(null)
-
-  const filteredImages = activeCategory === "all" 
-    ? images 
-    : images.filter(img => img.category === activeCategory)
-
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Header />
+
       <main className="flex-1">
-        <section className="border-b border-border bg-background py-12">
-          <div className="mx-auto max-w-6xl px-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Facility gallery</p>
-            <h1 className="mt-2 text-3xl font-semibold text-primary">Visual reference for treatment spaces and equipment</h1>
-            <p className="mt-4 max-w-3xl text-sm text-foreground/80">
-              Images are provided for orientation only and correspond to active treatment bays, equipment, and staff. Lighting and layout may vary slightly between visits.
+        {/* Hero */}
+        <section className="bg-slate-900 py-16 text-center text-white">
+          <div className="mx-auto max-w-4xl px-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Clinic Gallery</h1>
+            <p className="text-slate-300 text-lg">
+              Take a tour of our modern facilities and state-of-the-art equipment designed for your recovery.
             </p>
           </div>
         </section>
 
-        <section className="border-b border-border bg-secondary py-6">
-          <div className="mx-auto max-w-6xl px-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Filter
-              set</p>
-            <div className="mt-3 flex flex-wrap gap-2 text-sm">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`border border-border px-3 py-1 text-left ${
-                    activeCategory === category.id ? "bg-background font-semibold text-primary" : "text-foreground/80"
-                  }`}
-                  type="button"
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-b border-border bg-background py-12">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredImages.map((image) => (
-                <button
-                  key={image.id}
-                  onClick={() => setLightboxImage(image)}
-                  className="text-left"
-                  type="button"
-                >
-                  <figure className="border border-border p-2 text-sm text-foreground/80">
-                    <div className="relative aspect-square bg-secondary/40">
-                      <Image
-                        src={image.src || "/placeholder.svg"}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"
-                      />
+        {/* Gallery Grid */}
+        <section className="py-16 bg-white">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {galleryImages.map((img, i) => (
+                <div key={i} className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-100 shadow-md">
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 p-6">
+                      <p className="text-white font-bold text-lg">{img.category}</p>
+                      <p className="text-white/80 text-sm">{img.alt}</p>
                     </div>
-                    <figcaption className="mt-3">
-                      <p className="font-semibold text-foreground">{image.title}</p>
-                      <p className="text-xs uppercase tracking-wide text-muted-foreground">{image.category}</p>
-                    </figcaption>
-                  </figure>
-                </button>
+                  </div>
+                </div>
               ))}
             </div>
 
-            {filteredImages.length === 0 && (
-              <div className="py-12 text-sm text-muted-foreground">
-                No images available for the selected filter.
-              </div>
-            )}
-          </div>
-        </section>
-
-        {lightboxImage && (
-          <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/70 p-4"
-            onClick={() => setLightboxImage(null)}
-          >
-            <button
-              onClick={() => setLightboxImage(null)}
-              className="absolute right-6 top-6 text-background"
-              aria-label="Close preview"
-            >
-              <X className="h-6 w-6" />
-            </button>
-            <div
-              className="w-full max-w-4xl border border-border bg-background p-4"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="relative h-[60vh] bg-secondary/40">
-                <Image
-                  src={lightboxImage.src || "/placeholder.svg"}
-                  alt={lightboxImage.alt}
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="mt-3 text-sm text-foreground/80">
-                <p className="font-semibold text-foreground">{lightboxImage.title}</p>
-                <p className="text-xs text-muted-foreground">{lightboxImage.alt}</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <section className="bg-secondary py-12">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="grid gap-4 text-sm text-foreground/80 sm:grid-cols-3">
-              <div className="border border-border bg-background p-4">
-                <p className="text-xs uppercase tracking-wide text-muted-foreground">Facility size</p>
-                <p className="mt-2 text-2xl font-semibold text-primary">3000+ sq. ft.</p>
-              </div>
-              <div className="border border-border bg-background p-4">
-                <p className="text-xs uppercase tracking-wide text-muted-foreground">Treatment stations</p>
-                <p className="mt-2 text-2xl font-semibold text-primary">15 dedicated bays</p>
-              </div>
-              <div className="border border-border bg-background p-4">
-                <p className="text-xs uppercase tracking-wide text-muted-foreground">Equipment class</p>
-                <p className="mt-2 text-2xl font-semibold text-primary">Modern & calibrated</p>
-              </div>
+            <div className="mt-16 text-center bg-teal-50 rounded-2xl p-10">
+              <h3 className="text-2xl font-bold text-teal-900 mb-2">Visit Us in Person</h3>
+              <p className="text-teal-700 mb-6">Experience our facilities first-hand. We strictly maintain hygiene and safety protocols.</p>
+              <a href="/contact" className="inline-block bg-teal-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-teal-700 transition shadow-lg">
+                Get Directions
+              </a>
             </div>
           </div>
         </section>
-
-        <CTAStrip />
       </main>
+
       <Footer />
     </div>
   )
