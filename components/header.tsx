@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Phone, Menu, X, Mail, Clock, Facebook, Instagram, MessageCircle, MapPin, Youtube } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { BookAppointmentButton } from "@/components/book-appointment-button"
@@ -17,6 +18,7 @@ const navigation = [
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -105,7 +107,8 @@ export function Header() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-semibold text-foreground transition hover:text-primary"
+                className={`text-sm font-semibold transition hover:text-primary ${pathname === item.href ? "text-primary border-b-2 border-primary" : "text-foreground"
+                  }`}
               >
                 {item.name}
               </Link>
@@ -126,6 +129,7 @@ export function Header() {
         </div>
       </nav>
 
+
       {/* Mobile menu dropdown */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 top-[100px] z-40 h-[calc(100vh-100px)] bg-white overflow-y-auto lg:hidden">
@@ -135,7 +139,10 @@ export function Header() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="block rounded-lg border border-border px-4 py-3 text-base font-semibold text-foreground transition hover:bg-muted"
+                  className={`block rounded-lg border px-4 py-3 text-base font-semibold transition hover:bg-muted ${pathname === item.href
+                    ? "border-primary bg-primary/5 text-primary"
+                    : "border-border text-foreground"
+                    }`}
                   onClick={closeMobileMenu}
                 >
                   {item.name}
