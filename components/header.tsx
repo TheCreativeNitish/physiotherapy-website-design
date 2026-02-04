@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Phone, Menu, X, Mail, Clock, Facebook, Instagram, MessageCircle, MapPin } from "lucide-react"
+import { Phone, Menu, X, Mail, Clock, Facebook, Instagram, MessageCircle, MapPin, Youtube } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { BookAppointmentButton } from "@/components/book-appointment-button"
 
@@ -60,6 +60,10 @@ export function Header() {
             <a href="https://www.instagram.com/cuppingwithneha/reels/" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="Instagram">
               <Instagram className="h-4 w-4" />
               <span className="hidden sm:inline">Instagram</span>
+            </a>
+            <a href="https://m.youtube.com/%40synchroself?fbclid=PAb21jcAPv1idleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadQm6zp2jtKMBQCXyOBD5KoC9V6FnCcGOrpyasyEx27R2xwtrDZkhM8jl4xwQ_aem_H1jfW_nNthqsru0kzq12vA" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <Youtube className="h-4 w-4" />
+              <span className="hidden sm:inline">YouTube</span>
             </a>
             <a href="https://wa.me/919513060525" className="flex items-center gap-1 transition hover:text-orange-400" target="_blank" rel="noreferrer" aria-label="WhatsApp">
               <MessageCircle className="h-4 w-4" />
