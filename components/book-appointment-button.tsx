@@ -1,6 +1,6 @@
 "use client"
 
-import Link from "next/link"
+import { useAppointmentModal } from "@/contexts/appointment-modal-context"
 
 interface BookAppointmentButtonProps {
   variant?: "primary" | "secondary" | "outline" | "ghost"
@@ -17,6 +17,7 @@ export function BookAppointmentButton({
   children = "Book Appointment",
   onClick,
 }: BookAppointmentButtonProps) {
+  const { openModal } = useAppointmentModal()
 
 
   const baseStyles = "inline-flex items-center justify-center gap-2 font-bold rounded-full transition-all"
@@ -34,13 +35,17 @@ export function BookAppointmentButton({
     lg: "px-8 py-4 text-lg",
   }
 
+  const handleClick = () => {
+    openModal()
+    onClick?.()
+  }
+
   return (
-    <Link
-      href="/appointment"
+    <button
+      onClick={handleClick}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
-      onClick={onClick}
     >
       {children}
-    </Link>
+    </button>
   )
 }

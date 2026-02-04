@@ -5,6 +5,7 @@ import React from "react"
 import { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { MapEmbed } from "@/components/map-embed"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -241,17 +242,8 @@ export default function ContactPage() {
                   The map below references the central clinic. Branch details are listed further below for quick reference.
                 </p>
 
-                <div className="mt-4 h-[400px] overflow-hidden border border-border">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.123456789!2d85.308789!3d23.369865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDIyJzExLjUiTiA4NcKwMTgnMzEuNiJF!5e0!3m2!1sen!2sin!4v1234567890"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="PhysioCare Location"
-                  />
+                <div className="mt-4">
+                  <MapEmbed />
                 </div>
 
                 <Card className="mt-6 border border-border">
