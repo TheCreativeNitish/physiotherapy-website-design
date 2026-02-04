@@ -45,13 +45,9 @@ export function Footer() {
               <a href="mailto:1488neha@gmail.com" className="flex items-center gap-2 transition hover:text-whatsapp">
                 <Mail className="h-4 w-4" /> 1488neha@gmail.com
               </a>
-              <p className="flex items-start gap-2">
+              <p className="flex items-start gap-2 text-white">
                 <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0" />
                 1st cross,1st main, Nagappareddy layout, Ramamurthy Nagar, Bangalore, India, 560016
-              </p>
-              <p className="flex items-start gap-2">
-                <Clock className="mt-0.5 h-4 w-4 flex-shrink-0" />
-                Mon - Sat: 9:00 AM - 8:00 PM
               </p>
             </div>
           </div>
@@ -98,15 +94,17 @@ export function Footer() {
             <div className="space-y-4">
               <div>
                 <h4 className="text-lg font-semibold mb-3">Location</h4>
-                <p className="text-white/80 text-sm leading-relaxed">
+                <p className="text-white text-sm leading-relaxed">
                   1st cross,1st main, Nagappareddy layout, Ramamurthy Nagar, Bangalore, India, 560016
                 </p>
               </div>
 
               <div>
-                <h4 className="text-lg font-semibold mb-3">Hours</h4>
-                <p className="text-white/80 text-sm">
-                  Mon - Sat: 9:00 AM - 8:00 PM
+                <h4 className="text-lg font-semibold mb-3">Our Working Hours</h4>
+                <p className="text-white text-sm leading-relaxed">
+                  Monday to Saturday<br />
+                  Morning Session - 10 am to 1 pm<br />
+                  Evening Session - 4 pm to 7 pm
                 </p>
               </div>
 
