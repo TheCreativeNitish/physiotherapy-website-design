@@ -2,10 +2,12 @@
 
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { AppointmentBookingModal } from "@/components/appointment-booking-modal"
+import { useAppointmentModal } from "@/contexts/appointment-modal-context"
 import { Phone, Mail, MapPin, Clock, Calendar } from "lucide-react"
 
 export default function AppointmentPage() {
+    const { openModal } = useAppointmentModal()
+
     return (
         <div className="min-h-screen flex flex-col bg-white">
             <Header />
@@ -83,7 +85,7 @@ export default function AppointmentPage() {
                                 <div className="w-full max-w-xs">
                                     <button
                                         className="w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-transform hover:scale-105 flex items-center justify-center gap-2"
-                                        onClick={() => document.querySelector<HTMLElement>('[data-trigger-booking]')?.click()}
+                                        onClick={openModal}
                                     >
                                         <Calendar className="h-5 w-5" />
                                         Open Booking Form
