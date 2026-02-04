@@ -3,6 +3,13 @@
 import { Instagram, Play, Volume2, VolumeX } from "lucide-react"
 import { useState, useRef, useEffect } from "react"
 
+interface ReelPost {
+    id: number
+    type: string
+    url: string
+    thumbnail: string
+}
+
 function ReelCard({
     post,
     isActive,
@@ -10,7 +17,7 @@ function ReelCard({
     onActivate,
     setMuted
 }: {
-    post: any,
+    post: ReelPost,
     isActive: boolean,
     muted: boolean,
     onActivate: () => void,

@@ -9,7 +9,7 @@ const services = [
     image: "https://ik.imagekit.io/dvl5mhvik/premium_photo-1661672215321-e67893b20059.avif",
     icon: "⚡",
     title: "Electrotherapy",
-    description: "Advanced modalilites including IFT, UST, TENS, Laser, and Deep Heat for pain relief and healing.",
+    description: "Advanced modalities including IFT, UST, TENS, Laser, and Deep Heat for pain relief and healing.",
     detailedDescription: "Electrotherapy is a cornerstone of modern physiotherapy for pain management and muscle re-education. We utilize state-of-the-art modality equipment including TENS (Transcutaneous Electrical Nerve Stimulation), IFT (Interferential Therapy), Ultrasound therapy, and High-Intensity Laser. \n\nThese non-invasive treatments help reduce inflammation, alleviate pain, improve circulation, and stimulate muscle repair without medication. \n\nIt is highly effective for conditions like arthritis, back pain, and sports injuries, providing immediate relief and accelerating the natural healing process.",
     href: "#"
   },

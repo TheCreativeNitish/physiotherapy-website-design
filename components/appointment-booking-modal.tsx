@@ -40,9 +40,26 @@ export function AppointmentBookingModal() {
     setError("")
     setIsSubmitting(true)
 
-    // Validation
+    // Validation - Check required fields
     if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone || !formData.service) {
       setError("Please fill in all required fields")
+      setIsSubmitting(false)
+      return
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.email)) {
+      setError("Please enter a valid email address")
+      setIsSubmitting(false)
+      return
+    }
+
+    // Phone validation - Indian format (10 digits, starting with 6-9)
+    const phoneRegex = /^[6-9]\d{9}$/
+    const cleanPhone = formData.phone.replace(/\D/g, "")
+    if (!phoneRegex.test(cleanPhone)) {
+      setError("Please enter a valid Indian phone number (10 digits starting with 6-9)")
       setIsSubmitting(false)
       return
     }
@@ -56,7 +73,11 @@ export function AppointmentBookingModal() {
         const checkResult = await checkResponse.json()
 
         if (checkResult.status === "success" && Array.isArray(checkResult.data)) {
-          const isTaken = checkResult.data.some((apt: any) => {
+          interface Appointment {
+            appointmentDate: string
+            timeSlot: string
+          }
+          const isTaken = checkResult.data.some((apt: Appointment) => {
             if (!apt.appointmentDate || !apt.timeSlot) return false
 
             // Compare Date
