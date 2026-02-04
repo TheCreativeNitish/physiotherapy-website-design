@@ -129,26 +129,26 @@ export function Footer() {
         <div className="mt-12 rounded-2xl bg-primary/10 border border-primary/20 p-8 text-center backdrop-blur">
           <h3 className="text-2xl font-bold">Ready to Start Your Recovery Journey?</h3>
           <p className="mt-3 text-white/80">Book your appointment today and take the first step towards a pain-free life</p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
             <a
               href="https://wa.me/919513060525"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-bold text-slate-900 shadow-lg transition-all hover:scale-105"
+              className="flex items-center justify-center gap-2 rounded-full bg-white px-6 sm:px-8 py-3 sm:py-3.5 font-bold text-sm sm:text-base text-slate-900 shadow-lg transition-all hover:scale-105 w-full sm:w-auto"
             >
               <MessageCircle className="h-5 w-5" />
               WhatsApp Us
             </a>
             <a
               href="tel:+919513060525"
-              className="flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-bold text-slate-900 shadow-lg transition-all hover:scale-105"
+              className="flex items-center justify-center gap-2 rounded-full bg-white px-6 sm:px-8 py-3 sm:py-3.5 font-bold text-sm sm:text-base text-slate-900 shadow-lg transition-all hover:scale-105 w-full sm:w-auto"
             >
               <Phone className="h-5 w-5" />
               Call Now
             </a>
             <button
               onClick={openModal}
-              className="flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-bold text-slate-900 shadow-lg transition-all hover:scale-105"
+              className="flex items-center justify-center gap-2 rounded-full bg-white px-6 sm:px-8 py-3 sm:py-3.5 font-bold text-sm sm:text-base text-slate-900 shadow-lg transition-all hover:scale-105 w-full sm:w-auto"
             >
               <Calendar className="h-5 w-5" />
               Book Online
