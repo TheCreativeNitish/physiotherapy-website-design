@@ -13,6 +13,7 @@ const quickLinks = [
   { name: "Testimonials", href: "/#testimonials" },
   { name: "Careers", href: "/about#careers" },
   { name: "Contact", href: "/contact" },
+  { name: "Feedback", href: "https://docs.google.com/forms/d/e/1FAIpQLSc2N2QffJTg0Jj1FbePEeM73sW9WwiIXXEs-Jue1Bb8cHFOgA/viewform?usp=publish-editor" },
 ]
 
 const services = [
