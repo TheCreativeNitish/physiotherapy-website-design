@@ -42,7 +42,7 @@ export function TestimonialsSection() {
 
         <div className="grid gap-6 md:grid-cols-3">
           {testimonials.map((testimonial, i) => (
-            <article key={testimonial.id} className={`relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl fade-in animate-delay-${i}`}>
+            <article key={testimonial.id} className="relative overflow-hidden rounded-2xl bg-white p-8 shadow-lg transition-all hover:-translate-y-2 hover:shadow-2xl fade-in" style={{ animationDelay: `${i * 100}ms` }}>
               <Quote className="absolute right-6 top-6 h-12 w-12 text-primary/10" />
               <div className="relative">
                 <div className="mb-4 flex gap-1">
