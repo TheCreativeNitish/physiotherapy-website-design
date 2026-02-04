@@ -46,7 +46,7 @@ export function CTAStrip() {
         </div>
 
         <p className="mt-8 text-sm text-white/80">
-          Available Mon - Sat: 9:00 AM - 8:00 PM • Same-day appointments available
+          Available Mon - Sat • Same-day appointments available
         </p>
       </div>
     </section>
